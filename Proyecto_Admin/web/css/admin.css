@@ -1,0 +1,42 @@
+/**
+ * admin styles
+ * Antonio Jenaro Rodriguez
+ * admin-dir/style/admin.css
+ */
+
+body{
+	text-align:center;
+	padding:0;
+	margin-top:20px;
+	background:#d8d8d8;
+        
+        margin: 0 auto;
+}
+.login{
+    background-color: white;
+    height: 400px;
+    
+    margin-top: 10%;
+    border-radius: 8px;
+    /* width: 100%; */
+}
+#user_admin{
+     width: 50%; 
+}
+.contentlogin{
+    width: 400px;
+    margin: 0 auto;
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 10%;
+    padding: 15px 15px 15px 15px;
+    border-radius: 5px;
+    box-shadow: -11px -5px 16px -1px #888888;
+}
+#contentform{
+    margin: 0 auto;
+    
+}
+.loginText{
+    width: 100px;
+}
