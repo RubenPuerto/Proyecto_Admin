@@ -40,3 +40,12 @@ body{
 .loginText{
     width: 100px;
 }
+
+@media (max-width: 768px) {
+.contentlogin{
+width: 100%;
+}
+.login{
+    height: 250px;
+}
+}

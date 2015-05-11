@@ -9,6 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <title>Login Admin</title>
       
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -21,7 +23,7 @@
         <div class="container login">
            <!-- Acceso Panel de Gestión -->
             <div class="contentlogin">
-                <form name="fvalida" action="Login" method="post">
+                <form name="fvalida" action="LoginValidar" method="post">
                     <div class="form-group">
                         <label class="loginText" for="exampleInputEmail1">User</label>
                         <input type="text" name="usuario" class="form-control" id="user_admin" placeholder="Usuario">

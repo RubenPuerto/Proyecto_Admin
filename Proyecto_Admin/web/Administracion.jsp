@@ -13,5 +13,9 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <%
+            String user = (String)session.getAttribute("varUsuario");
+            out.println(user);
+        %>
     </body>
 </html>
