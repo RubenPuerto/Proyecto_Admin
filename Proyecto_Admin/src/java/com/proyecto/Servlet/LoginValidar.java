@@ -30,57 +30,41 @@ public class LoginValidar extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    Conexion c=new Conexion();
-    ResultSet rs;
-    String user;
-    String Password;
-    String usuario;
-    String Contraseña;
-    int b=0;
+ 
+     
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException  {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            user=request.getParameter("usuario");
-            Password=request.getParameter("pass");
-            try {
-                rs=c.GetUser(user,Password);
-                while (rs.next()) { 
-                   usuario=rs.getString("User");
-                   Contraseña=rs.getString("Password");
-                   if(usuario.equals(usuario) && Contraseña.equals(Password))
-                    {
-                        b=1;//si se cumple es 1
-                    }else{
-                        b=0; //sino es 0
-                    } 
+                
+            String user=request.getParameter("usuario");
+            String Password=request.getParameter("pass");
+            try{
+                /* TODO output your page here. You may use following sample code. */
+
+                Conexion c=new Conexion();
+                ResultSet rs=c.GetUser(user, Password);
+                int contador=0;
+                while(rs.next()){
+                contador++;
                 }
-                if (b==1){
-                    String ja = new String (usuario);
-                    HttpSession op = request.getSession();
-                    op.putValue("varUsuario",ja);
-                    out.println("<script>alert('Usuario Identificado Correctamente')</script>");
-                    String url = request.getScheme() + "://" +   // "http" + "://
-                                 request.getServerName() +       // "myhost"
-                                 ":" +                           // ":"
-                                 request.getServerPort()  +"/Proyecto_Admin/Administracion.jsp";     // "8080"
-                                      // "/people"
-                    response.sendRedirect(url);
-                }else{
-                    out.println("<script>alert('Datos Erroneos  ')</script>");
-                    String url = request.getScheme() + "://" +   // "http" + "://
-                                 request.getServerName() +       // "myhost"
-                                 ":" +                           // ":"
-                                 request.getServerPort() + "/Proyecto_Admin";       // "/people"
-                    response.sendRedirect(url);
+                if(contador==1){
+                HttpSession actual=request.getSession(true);
+                actual.setAttribute("logueado", user);
+                response.sendRedirect("Administracion.jsp");
                 }
-            } catch (Exception e) {
-                out.println("No hay conexion a la base de datos ");
+                else {
+                    response.sendRedirect("login.jsp");
+                }
             }
-        }
+            catch (Exception e) {
+                out.println("esto no funciona");
+            }
+        }    
     }
+        
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
