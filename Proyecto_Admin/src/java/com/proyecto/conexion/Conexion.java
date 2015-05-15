@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import com.mysql.jdbc.PreparedStatement;
+import java.io.*;
 /**
  *
  * @author Ruben P
@@ -60,9 +61,41 @@ public class Conexion {
     this.datos=this.consulta.executeQuery();
     return this.datos;
     }
-    
+   
+    public String SaveImg(String nombreProducto, String dirArchivo) throws SQLException{
+        String inserto="";
+        this.con();
+        Connection cn=null;
+        String sql="INSERT INTO producto(nombreProducto, nombreImagen, tamannoImagen, fotoProducto) ";
+        sql+="VALUES(?,?,?,?)";
+        try{
+            this.consulta=(PreparedStatement) con.prepareStatement(sql);
+            this.consulta.setString(1, nombreProducto);
+            this.consulta.setString(2, nombreProducto+".jpg");
+            //Parametros de la imagen
+            File fichero = new File(dirArchivo);
+            FileInputStream streamEntrada = new FileInputStream(fichero);
+            int tamañoImagen = streamEntrada.available();
+            //Establecer los parametros a la BD
+            this.consulta.setInt(3, tamañoImagen);
+            this.consulta.setBinaryStream(4, streamEntrada, (int) fichero.length());
+            consulta.executeQuery();
+            
+        }catch (Exception e) {
+        }finally{
+            try{
+                this.consulta.close();
+                cn.close();
+            }catch(Exception ex){
+
+            }
+        }
+        return inserto;
+        
+                
+    }
 
    
-    
+
     
 }
