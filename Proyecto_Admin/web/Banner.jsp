@@ -4,6 +4,8 @@
     Author     : rubenp
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.proyecto.conexion.Conexion_1"%>
 <%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -76,8 +78,8 @@ if (actual==null){
             <div class="col-xs-6 col-md-4">
                 
                 <ul class="nav nav-pills nav-stacked bs-docs-sidenav affix">
-                    <li class="active"><a href="#">Inicio</a></li>
-                    <li><a href="Banner.jsp">Banner</a></li>
+                    <li><a href="Administracion.jsp">Inicio</a></li>
+                    <li class="active"><a href="#">Banner</a></li>
                     <li><a href="Programas.jsp">Programas</a></li>
                     <li><a href="#">Cursos</a></li>
                     <li><a href="#">Reporte</a></li>
@@ -85,8 +87,31 @@ if (actual==null){
                 
             </div>
             <div class="col-xs-12 col-md-8">
-                    <h3>Panel de Administración<br><small>Selecciona una opcion del menu.</small></h3>
-                    
+                <div class="content_tabla">
+                    <div class="title">
+                        <h3>Panel de Administración<br><small>Insert Banner</small></h3>
+                    </div>
+                    <table class="table table-condensed" id="tabla" style="margin: 0 auto;">
+                        <%
+                        out.println("<tr>");
+                        out.println("<td>Id</td>");
+                        out.println("<td>Curso</td>");
+                        out.println("<td>Descripcion</td>");
+                        out.println("</tr>");
+                        Conexion_1 c=new Conexion_1();
+                        ResultSet rs2=c.getCursos();
+                        while(rs2.next())
+                        {   
+                            out.println("<tr style='cursor:pointer' class='desmarcado'>");
+                            out.println("<td>"+rs2.getInt("IdCurso")+"</td>");
+                            out.println("<td>"+rs2.getString("TituloCurso")+"</td>");
+                            out.println("<td>"+rs2.getString("DescripcionCurso") +"</td>");
+                           // out.println("<td><input type='button' id='submit2' value='Añadir' /></td>");
+                            out.println("</tr>");
+                        }
+                        %>
+                    </table>
+                </div>
             </div>    
         </div>
         

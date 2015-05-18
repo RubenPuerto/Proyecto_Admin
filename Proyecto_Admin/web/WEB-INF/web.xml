@@ -5,24 +5,24 @@
         <servlet-class>com.proyecto.Servlet.LoginValidar</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UploadFile</servlet-name>
-        <servlet-class>com.proyecto.Servlet.UploadFile</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>InsertImg</servlet-name>
         <servlet-class>com.proyecto.Servlet.InsertImg</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpImg</servlet-name>
+        <servlet-class>com.proyecto.Servlet.UpImg</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginValidar</servlet-name>
         <url-pattern>/LoginValidar</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UploadFile</servlet-name>
-        <url-pattern>/UploadFile</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>InsertImg</servlet-name>
         <url-pattern>/InsertImg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpImg</servlet-name>
+        <url-pattern>/UpImg</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
