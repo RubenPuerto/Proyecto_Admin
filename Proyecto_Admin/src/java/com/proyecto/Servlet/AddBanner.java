@@ -24,65 +24,44 @@ import javax.servlet.http.Part;
  * @author RUBEN
  */
 @MultipartConfig(maxFileSize = 16177215) 
-public class UpPrograma extends HttpServlet {
-    
+public class AddBanner extends HttpServlet {
     private String dbURL = "jdbc:mysql://localhost:3306/proyecto";
     private String dbUser = "root";
     private String dbPass = "root";
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            String Nombre=request.getParameter("NombreBanner");
+            String Url=request.getParameter("UrlBanner");
             
-            String titulo=request.getParameter("Titulo");
-            String IdVideo=request.getParameter("IdVideo");
-            String Descripcion=request.getParameter("Descripcion");
-            
-            Part FilePhotoDetalle= request.getPart("PhotoDetalleCurso");
-            Part FilePhotoHome=request.getPart("PhotoHome");
-            
-            InputStream ContentPhotoHome =null;
-            InputStream ContentPhotoDetalle=null;
-            
-            
-            
-        if (FilePhotoDetalle != null || FilePhotoHome != null) {
+            System.out.println(Nombre+" "+Url);
+            Part FilePhotoBanner = request.getPart("Photo");
+                       
+            InputStream ContentPhotoBanner = null;
+            if (FilePhotoBanner != null) {
             // obtains input stream of the upload file
-            ContentPhotoHome=FilePhotoHome.getInputStream();
-            ContentPhotoDetalle=FilePhotoDetalle.getInputStream();
-        }
-        String message = null;
-        Connection conn = null; // connection to the database
-        
-                try {
+                System.out.println("entro al if");
+            ContentPhotoBanner=FilePhotoBanner.getInputStream();
+            
+            }
+            String message = null;
+            Connection conn = null;
+            try {
                 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
                 conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
  
-//                String sql = "INSERT INTO banner (Nombre, ImgBanner) values ( ?, ?)";
-                String sql = "INSERT INTO programas (TituloCurso, ImagenCurso, IdVideo, DescripcionCurso, ImgCursosInicio) values ( ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO banner (Nombre, Url, Img) values ( ?, ?, ?)";
                 PreparedStatement statement = conn.prepareStatement(sql);
-                out.println(statement);
-                statement.setString(1, titulo);
-                statement.setBlob(2, ContentPhotoDetalle);
-                statement.setString(3, IdVideo);
-                statement.setString(4, Descripcion);
-                statement.setBlob(5, ContentPhotoHome);
+                statement.setString(1, Nombre);
+                statement.setString(2, Url);
+                statement.setBlob(3, ContentPhotoBanner);
                 statement.executeUpdate();
                 
-                
             } catch (SQLException ex) {
-                out.println("error ruben");
+                out.println(ex);
                 ex.printStackTrace();
             }
         }

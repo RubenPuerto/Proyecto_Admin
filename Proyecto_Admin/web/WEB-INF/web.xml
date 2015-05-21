@@ -16,6 +16,18 @@
         <servlet-name>UpPrograma</servlet-name>
         <servlet-class>com.proyecto.Servlet.UpPrograma</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarItem</servlet-name>
+        <servlet-class>com.proyecto.Servlet.ColumnEliminarItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Eliminar</servlet-name>
+        <servlet-class>com.proyecto.Servlet.Eliminar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddBanner</servlet-name>
+        <servlet-class>com.proyecto.Servlet.AddBanner</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginValidar</servlet-name>
         <url-pattern>/LoginValidar</url-pattern>
@@ -31,6 +43,18 @@
     <servlet-mapping>
         <servlet-name>UpPrograma</servlet-name>
         <url-pattern>/UpPrograma</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarItem</servlet-name>
+        <url-pattern>/EliminarItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Eliminar</servlet-name>
+        <url-pattern>/Eliminar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddBanner</servlet-name>
+        <url-pattern>/AddBanner</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

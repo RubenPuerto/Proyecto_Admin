@@ -20,26 +20,18 @@
         <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
-        <form method="post" action="UpPrograma" enctype="multipart/form-data">
+        <form method="post" action="AddBanner" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="Nombre">Titulo Programa</label>
-                <input type="Text" class="form-control" name="Titulo" placeholder="">
+                <label for="Nombre">Nombre</label>
+                <input type="Text" class="form-control" name="NombreBanner" placeholder="">
             </div>
             <div class="form-group">
-                <label for="exampleInputFile">Imagen Programa Home</label>
-                <input type="file" name="PhotoHome">
+                <label for="LabelUrl">Url</label>
+                <input type="url" class="form-control" name="UrlBanner" placeholder="">
             </div>
             <div class="form-group">
-                <label for="LabelUrl">Id Video</label>
-                <input type="text" class="form-control" name="IdVideo" placeholder="">
-            </div>
-            <div class="form-group">
-                <label for="LabelUrl">Descripcion Programa</label>
-                <input type="text" class="form-control" name="Descripcion" placeholder="">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputFile">Imagen Programa Detalle Curso</label>
-                <input type="file" name="PhotoDetalleCurso">
+                <label for="exampleInputFile">Imagen Banner</label>
+                <input type="file" name="Photo">
             </div>
             <button type="submit" class="btn btn-default">Guardar</button>
         </form>

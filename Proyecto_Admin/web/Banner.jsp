@@ -5,7 +5,8 @@
 --%>
 
 <%@page import="java.sql.ResultSet"%>
-<%@page import="com.proyecto.conexion.Conexion_1"%>
+<%@page import="com.proyecto.conexion.Conexion"%>
+
 <%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -40,11 +41,17 @@ if (actual==null){
         <title>JSP Page</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/docs.css" rel="stylesheet" type="text/css"/>
-        
+        <link rel="stylesheet" href="css/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
         
         <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.5"></script>
         
+        <script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+        </script>
     </head>
     <body>        
         <div class="container">
@@ -81,7 +88,7 @@ if (actual==null){
                     <li><a href="Administracion.jsp">Inicio</a></li>
                     <li class="active"><a href="#">Banner</a></li>
                     <li><a href="Programas.jsp">Programas</a></li>
-                    <li><a href="#">Cursos</a></li>
+                    <li><a href="Temas.jsp">Cursos</a></li>
                     <li><a href="#">Reporte</a></li>
                 </ul>
                 
@@ -89,28 +96,42 @@ if (actual==null){
             <div class="col-xs-12 col-md-8">
                 <div class="content_tabla">
                     <div class="title">
-                        <h3>Panel de Administración<br><small>Insert Banner</small></h3>
+                        <h3>Panel de Administración<br><small>Administracion del Banner</small></h3>
                     </div>
-                    <table class="table table-condensed" id="tabla" style="margin: 0 auto;">
-                        <%
-                        out.println("<tr>");
-                        out.println("<td>Id</td>");
-                        out.println("<td>Curso</td>");
-                        out.println("<td>Descripcion</td>");
-                        out.println("</tr>");
-                        Conexion_1 c=new Conexion_1();
-                        ResultSet rs2=c.getCursos();
-                        while(rs2.next())
-                        {   
-                            out.println("<tr style='cursor:pointer' class='desmarcado'>");
-                            out.println("<td>"+rs2.getInt("IdCurso")+"</td>");
-                            out.println("<td>"+rs2.getString("TituloCurso")+"</td>");
-                            out.println("<td>"+rs2.getString("DescripcionCurso") +"</td>");
-                           // out.println("<td><input type='button' id='submit2' value='Añadir' /></td>");
+                    <div class="row contentOptions">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default"><a class="fancybox fancybox.iframe" href="AddBanner.jsp">Agregar</a></button>
+                            <button type="button" id="btnAgregarColumna" class="btn btn-default">Eliminar</button>
+                            <button type="button" class="btn btn-default" >Modificar</button>
+                        </div>
+                    </div>
+                    <div class="content_tabla">
+                        <table class="table table-bordered" id="tabla" style="margin: 0 auto;">
+                            <%
+                            out.println("<thead>");
+                            out.println("<tr>");
+                            out.println("<td>Id</td>");
+                            out.println("<td>Nombre</td>");
+                            out.println("<td>Url</td>");
+                            out.println("<td>Imagen</td>");
                             out.println("</tr>");
-                        }
-                        %>
-                    </table>
+                            out.println("</thead>");
+                            Conexion c=new Conexion();
+                            ResultSet rs=c.getBanner();
+                            out.println("<tbody>");
+                            while(rs.next())
+                            {   
+                                out.println("<tr>");
+                                out.println("<td>"+rs.getInt("Id")+"</td>");
+                                out.println("<td>"+rs.getString("Nombre")+"</td>");
+                                out.println("<td>"+rs.getString("url") +"</td>");
+                                out.println("<td><input type='button' id='submit2' value='Ver Img' /></td>");
+                                out.println("</tr>");
+                            }
+                            out.println("</tbody>");
+                            %>
+                        </table>
+                    </div>
                 </div>
             </div>    
         </div>

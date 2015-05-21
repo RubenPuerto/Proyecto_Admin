@@ -5,30 +5,20 @@
  */
 package com.proyecto.Servlet;
 
+import com.proyecto.conexion.Conexion;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 /**
  *
  * @author RUBEN
  */
-@MultipartConfig(maxFileSize = 16177215) 
-public class UpPrograma extends HttpServlet {
-    
-    private String dbURL = "jdbc:mysql://localhost:3306/proyecto";
-    private String dbUser = "root";
-    private String dbPass = "root";
+public class Eliminar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,51 +29,49 @@ public class UpPrograma extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    public Conexion c;
+    public ResultSet rs;
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            c=new Conexion();
+            String id = request.getParameter("id");
             
-            String titulo=request.getParameter("Titulo");
-            String IdVideo=request.getParameter("IdVideo");
-            String Descripcion=request.getParameter("Descripcion");
-            
-            Part FilePhotoDetalle= request.getPart("PhotoDetalleCurso");
-            Part FilePhotoHome=request.getPart("PhotoHome");
-            
-            InputStream ContentPhotoHome =null;
-            InputStream ContentPhotoDetalle=null;
-            
-            
-            
-        if (FilePhotoDetalle != null || FilePhotoHome != null) {
-            // obtains input stream of the upload file
-            ContentPhotoHome=FilePhotoHome.getInputStream();
-            ContentPhotoDetalle=FilePhotoDetalle.getInputStream();
-        }
-        String message = null;
-        Connection conn = null; // connection to the database
-        
+            if(id.isEmpty()){
+                out.println("No se puedo cargar llene todos los datos");
+            }
+            else {
                 try {
-                DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-                conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
- 
-//                String sql = "INSERT INTO banner (Nombre, ImgBanner) values ( ?, ?)";
-                String sql = "INSERT INTO programas (TituloCurso, ImagenCurso, IdVideo, DescripcionCurso, ImgCursosInicio) values ( ?, ?, ?, ?, ?)";
-                PreparedStatement statement = conn.prepareStatement(sql);
-                out.println(statement);
-                statement.setString(1, titulo);
-                statement.setBlob(2, ContentPhotoDetalle);
-                statement.setString(3, IdVideo);
-                statement.setString(4, Descripcion);
-                statement.setBlob(5, ContentPhotoHome);
-                statement.executeUpdate();
-                
-                
-            } catch (SQLException ex) {
-                out.println("error ruben");
-                ex.printStackTrace();
+                    rs=c.EliminarItem(id);
+                    try {
+                        ResultSet rs2=c.getCursos();
+                        out.println("<thead>");
+                        out.println("<tr>");
+                        out.println("<td>IdCurso</td>");
+                        out.println("<td>Curso</td>");
+                        out.println("<td>Descripcion</td>");
+                        out.println("</tr>");
+                        out.println("</thead>");
+                        out.println("<tbody>");
+                        while(rs2.next())
+                        {   
+                            
+                            out.println("<tr>");
+                            out.println("<td>"+rs2.getInt("IdCurso")+"</td>");
+                            out.println("<td>"+rs2.getString("TituloCurso")+"</td>");
+                            out.println("<td>"+rs2.getString("DescripcionCurso") +"</td>");
+                            out.println("</tr>");
+
+                        }
+                        out.println("<tbody>");
+                    } catch (Exception e) {
+                    }
+                } catch (Exception e) {
+                }
             }
         }
     }
