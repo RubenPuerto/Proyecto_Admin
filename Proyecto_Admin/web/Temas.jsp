@@ -102,8 +102,8 @@ if (actual==null){
                     </div>
                     <div class="row contentOptions">
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default"><a class="fancybox fancybox.iframe" href="AddPrograma.jsp">Agregar</a></button>
-                            <button type="button" id="btnAgregarColumna" class="btn btn-default" onclick="ColumnEliminarItem();" >Eliminar</button>
+                            <button type="button" class="btn btn-default"><a class="fancybox fancybox.iframe" href="AddCurso.jsp">Agregar</a></button>
+                            <button type="button" id="btnAgregarColumna" class="btn btn-default">Eliminar</button>
                             <button type="button" class="btn btn-default" >Modificar</button>
                         </div>
                     </div>
@@ -113,21 +113,28 @@ if (actual==null){
                             out.println("<thead>");
                             out.println("<tr>");
                             out.println("<th>Id</th>");
-                            out.println("<th>Curso</th>");
+                            out.println("<th>IdPadre</th>");
+                            out.println("<th>Costo</th>");
                             out.println("<th>Descripcion</th>");
+                            out.println("<th>Titulo</th>");
+                            out.println("<th>Imagen</th>");
                             //out.println("<th>Descripcion</th>");
                             out.println("</tr>");
                             out.println("</thead>");
                             Conexion c=new Conexion();
-                            ResultSet rs2=c.getCursos();
+                            ResultSet rs2=c.getTemas();
                             out.println("<tbody>");
                             while(rs2.next())
                             {   
-                                out.println("<tr data-valor="+rs2.getInt("IdCurso")+"lass='click'>");
-                                out.println("<td>"+rs2.getInt("IdCurso")+"</td>");
+                                out.println("<tr>");
+                                out.println("<td>"+rs2.getInt("IdTemas")+"</td>");
                                 out.println("<td>"+rs2.getString("TituloCurso")+"</td>");
-                                out.println("<td>"+rs2.getString("DescripcionCurso") +"</td>");
-                                //out.println("<td><input type='button' id='submit2' value='Ver' /></td>");
+                                out.println("<td>"+rs2.getString("Costo") +"</td>");
+                                out.println("<td>"+rs2.getString("Descripcion") +"</td>");
+                                out.println("<td>"+rs2.getString("Titulo") +"</td>");
+                                out.println("<td> <input type='button' id='submit2' value='Ver Img'></td>");
+                                
+                                
                                 out.println("</tr>");
                             }
                             out.println("</tbody>");

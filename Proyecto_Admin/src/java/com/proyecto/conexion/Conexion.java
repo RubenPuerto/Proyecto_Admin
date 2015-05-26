@@ -141,6 +141,14 @@ public class Conexion {
     this.datos=this.consulta.executeQuery();
     return this.datos;
     }
+    public ResultSet getTemas() throws SQLException 
+    {
+    this.con();
+
+    this.consulta=(PreparedStatement) this.con.prepareStatement("SELECT a.IdTemas, a.Costo, a.Descripcion, a.Titulo, b.TituloCurso FROM proyecto.temas a inner join programas b on a.idPadre= b.IdCurso;");
+    this.datos=this.consulta.executeQuery();
+    return this.datos;
+    }
     
     
 }
