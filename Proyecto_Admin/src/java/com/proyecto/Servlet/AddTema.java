@@ -22,30 +22,50 @@ import javax.servlet.http.Part;
  * @author RUBEN
  */
 @MultipartConfig(maxFileSize = 16177215) 
-public class AddBanner extends HttpServlet {
-        
+public class AddTema extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String Nombre=request.getParameter("NombreBanner");
-            String Url=request.getParameter("UrlBanner");
+            String IdCurso=request.getParameter("Cursos");
+            String Titulo=request.getParameter("TituloTema");
+            String Descripcion=request.getParameter("DescripcionTema");
+            String Costo=request.getParameter("CostoTema");
             
-            System.out.println(Nombre+" "+Url);
-            Part FilePhotoBanner = request.getPart("Photo");
+//            String IdCurso= "1";
+//            String Titulo="pruebas";
+//            String Descripcion="pruebas";
+//            String Costo="1000";
+            out.println(IdCurso);
+            out.println(Titulo);
+            out.println(Descripcion);
+            out.println(Costo);
+            
+            Part PhotoTema = request.getPart("PhotoTema");
                        
-            InputStream ContentPhotoBanner = null;
-            if (FilePhotoBanner != null) {
+            InputStream ContentPhotoTema = null;
+            if (PhotoTema != null) {
             // obtains input stream of the upload file
-                System.out.println("entro al if");
-            ContentPhotoBanner=FilePhotoBanner.getInputStream();
+            out.println("entro al if");   
+            ContentPhotoTema=PhotoTema.getInputStream();
             
             }
             try {
                 Conexion c=new Conexion();
-                ResultSet rs=c.SaveBanner(Nombre, Url, ContentPhotoBanner );
+                ResultSet rs=c.SaveTema(IdCurso, Costo, Descripcion, Titulo, ContentPhotoTema);
                 out.println("<div>se guardo</div>");
+                out.println(rs);
             } catch (Exception e) {
                 out.println("<div>No se guardo nada</div>");
             }

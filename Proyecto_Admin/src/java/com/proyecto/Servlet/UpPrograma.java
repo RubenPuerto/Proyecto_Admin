@@ -5,12 +5,14 @@
  */
 package com.proyecto.Servlet;
 
+import com.proyecto.conexion.Conexion;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -25,10 +27,7 @@ import javax.servlet.http.Part;
  */
 @MultipartConfig(maxFileSize = 16177215) 
 public class UpPrograma extends HttpServlet {
-    
-    private String dbURL = "jdbc:mysql://localhost:3306/proyecto";
-    private String dbUser = "root";
-    private String dbPass = "root";
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -62,29 +61,15 @@ public class UpPrograma extends HttpServlet {
             ContentPhotoHome=FilePhotoHome.getInputStream();
             ContentPhotoDetalle=FilePhotoDetalle.getInputStream();
         }
-        String message = null;
-        Connection conn = null; // connection to the database
         
-                try {
-                DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-                conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
- 
-//                String sql = "INSERT INTO banner (Nombre, ImgBanner) values ( ?, ?)";
-                String sql = "INSERT INTO programas (TituloCurso, ImagenCurso, IdVideo, DescripcionCurso, ImgCursosInicio) values ( ?, ?, ?, ?, ?)";
-                PreparedStatement statement = conn.prepareStatement(sql);
-                out.println(statement);
-                statement.setString(1, titulo);
-                statement.setBlob(2, ContentPhotoDetalle);
-                statement.setString(3, IdVideo);
-                statement.setString(4, Descripcion);
-                statement.setBlob(5, ContentPhotoHome);
-                statement.executeUpdate();
-                
-                
-            } catch (SQLException ex) {
-                out.println("error ruben");
-                ex.printStackTrace();
+        try {
+                Conexion c=new Conexion();
+                ResultSet rs=c.SavePrograma(titulo, ContentPhotoDetalle, IdVideo, Descripcion, ContentPhotoHome );
+                out.println("<div>se guardo</div>");
+            } catch (Exception e) {
+                out.println("<div>No se guardo nada</div>");
             }
+        
         }
     }
 

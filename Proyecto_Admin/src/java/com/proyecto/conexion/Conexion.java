@@ -7,6 +7,7 @@
 package com.proyecto.conexion;
 
 import com.mysql.jdbc.PreparedStatement;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,7 +20,7 @@ import java.sql.Statement;
  */
 public class Conexion {
     private Connection con;
-    private PreparedStatement consulta;
+    public PreparedStatement consulta;
     public ResultSet datos;
     private String server,user,bd,pass;
    
@@ -149,6 +150,41 @@ public class Conexion {
     this.datos=this.consulta.executeQuery();
     return this.datos;
     }
+    public ResultSet SaveBanner(String Nombre, String Url, InputStream ContentPhotoBanner  ) throws SQLException{
+    this.con();
+    String sql = "INSERT INTO banner (Nombre, Url, Img) values ( ?, ?, ?)";
+    this.consulta=(PreparedStatement) this.con.prepareStatement(sql);
+    this.consulta.setString(1, Nombre);
+    this.consulta.setString(2, Url);
+    this.consulta.setBlob(3, ContentPhotoBanner);
+    this.consulta.executeUpdate();
+    return this.datos;
+    }
+    public ResultSet SavePrograma(String titulo, InputStream ContentPhotoDetalle, String IdVideo, String Descripcion, InputStream ContentPhotoHome ) throws SQLException{
+    this.con();
+    String sql = "INSERT INTO programas (TituloCurso, ImagenCurso, IdVideo, DescripcionCurso, ImgCursosInicio) values ( ?, ?, ?, ?, ?)";
+    this.consulta=(PreparedStatement) this.con.prepareStatement(sql);
+    this.consulta.setString(1, titulo);
+    this.consulta.setBlob(2, ContentPhotoDetalle);
+    this.consulta.setString(3, IdVideo);
+    this.consulta.setString(4, Descripcion);
+    this.consulta.setBlob(5, ContentPhotoHome);
+    consulta.executeUpdate();
+    return this.datos;
+    }
+    public ResultSet SaveTema(String IdCurso, String Costo, String Descripcion, String Titulo, InputStream ContentPhotoTema  ) throws SQLException{
+    this.con();
+    String sql = "INSERT INTO Temas (IdPadre, Costo, Descripcion, Titulo, ImgTema) values ( ?, ?, ?, ?, ?)";
+    this.consulta=(PreparedStatement) this.con.prepareStatement(sql);
+    this.consulta.setString(1, IdCurso);
+    this.consulta.setString(2, Costo);
+    this.consulta.setString(3, Descripcion);
+    this.consulta.setString(4, Titulo);
+    this.consulta.setBlob(5, ContentPhotoTema);
+    consulta.executeUpdate();
+    return this.datos;
+    }
+    
     
     
 }

@@ -28,6 +28,10 @@
         <servlet-name>AddBanner</servlet-name>
         <servlet-class>com.proyecto.Servlet.AddBanner</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddTema</servlet-name>
+        <servlet-class>com.proyecto.Servlet.AddTema</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginValidar</servlet-name>
         <url-pattern>/LoginValidar</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>AddBanner</servlet-name>
         <url-pattern>/AddBanner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddTema</servlet-name>
+        <url-pattern>/AddTema</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
