@@ -46,6 +46,7 @@ if (actual==null){
         <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.5"></script>
+        <script src="js/ConfigTabla.js" type="text/javascript"></script>
         
         <script type="text/javascript">
 	$(document).ready(function() {
@@ -101,8 +102,8 @@ if (actual==null){
                     <div class="row contentOptions">
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default"><a class="fancybox fancybox.iframe" href="AddBanner.jsp">Agregar</a></button>
-                            <button type="button" id="btnAgregarColumna" class="btn btn-default">Eliminar</button>
-                            <button type="button" class="btn btn-default" >Modificar</button>
+                            <button type="button" id="btnAgregarColumna" class="btn btn-default" onclick="ColumnEliminarBanner();" >Eliminar</button>
+                            <button type="button" class="btn btn-default" onclick="ColumnModificar('Banner');" >Modificar</button>
                         </div>
                     </div>
                     <div class="content_tabla">

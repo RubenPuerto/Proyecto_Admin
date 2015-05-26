@@ -184,6 +184,28 @@ public class Conexion {
     consulta.executeUpdate();
     return this.datos;
     }
+    public ResultSet EliminarCurso(String Id) throws SQLException{
+    this.con();
+
+    this.consulta=(PreparedStatement) this.con.prepareStatement("DELETE FROM `proyecto`.`temas` WHERE `IdTemas`='"+Id+"';");
+    this.consulta.executeUpdate();
+    return this.datos;
+    }
+    public ResultSet EliminarBanner(String Id) throws SQLException{
+    this.con();
+
+    this.consulta=(PreparedStatement) this.con.prepareStatement("DELETE FROM `proyecto`.`banner` WHERE `Id`='"+Id+"';");
+    this.consulta.executeUpdate();
+    return this.datos;
+    }
+    public ResultSet getItemBanner(String id) throws SQLException 
+    {
+    this.con();
+
+    this.consulta=(PreparedStatement) this.con.prepareStatement("SELECT * from banner where Id='"+id+"'");
+    this.datos=this.consulta.executeQuery();
+    return this.datos;
+    }
     
     
     

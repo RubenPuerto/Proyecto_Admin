@@ -32,6 +32,26 @@
         <servlet-name>AddTema</servlet-name>
         <servlet-class>com.proyecto.Servlet.AddTema</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ColumnEliminarCurso</servlet-name>
+        <servlet-class>com.proyecto.Servlet.ColumnEliminarCurso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarCurso</servlet-name>
+        <servlet-class>com.proyecto.Servlet.EliminarCurso</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ColumnEliminarBanner</servlet-name>
+        <servlet-class>com.proyecto.Servlet.ColumnEliminarBanner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarBanner</servlet-name>
+        <servlet-class>com.proyecto.Servlet.EliminarBanner</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ColumnaModificar</servlet-name>
+        <servlet-class>com.proyecto.Servlet.ColumnaModificar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginValidar</servlet-name>
         <url-pattern>/LoginValidar</url-pattern>
@@ -63,6 +83,26 @@
     <servlet-mapping>
         <servlet-name>AddTema</servlet-name>
         <url-pattern>/AddTema</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ColumnEliminarCurso</servlet-name>
+        <url-pattern>/ColumnEliminarCurso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarCurso</servlet-name>
+        <url-pattern>/EliminarCurso</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ColumnEliminarBanner</servlet-name>
+        <url-pattern>/ColumnEliminarBanner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarBanner</servlet-name>
+        <url-pattern>/EliminarBanner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ColumnaModificar</servlet-name>
+        <url-pattern>/ColumnaModificar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

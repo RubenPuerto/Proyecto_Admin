@@ -77,7 +77,7 @@ if (actual==null){
                             <ul class="nav navbar-nav visible-xs">
 				<li class="active"><a href="">Inicio</a></li>
 				<li><a href="cursos.jsp">Cursos</a></li>
-                                <li><a class="fancybox fancybox.iframe" href="NuevoCurso.jsp">Formulario</a></li>	
+                                
                             </ul>
                         </div>
                     </div>
@@ -98,13 +98,13 @@ if (actual==null){
             <div class="col-xs-12 col-md-8">
                 <div class="content_Datos">
                     <div class="title">
-                        <h3>Panel de Administración<br><small>Administracion de Programas</small></h3>
+                        <h3>Panel de Administración<br><small>Administracion de Cursos</small></h3>
                     </div>
                     <div class="row contentOptions">
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default"><a class="fancybox fancybox.iframe" href="AddCurso.jsp">Agregar</a></button>
-                            <button type="button" id="btnAgregarColumna" class="btn btn-default">Eliminar</button>
-                            <button type="button" class="btn btn-default" >Modificar</button>
+                            <button type="button" id="btnAgregarColumna" class="btn btn-default" onclick="ColumnEliminarCurso();">Eliminar</button>
+                            <button type="button" class="btn btn-default" onclick="ColumnModificar('Temas');">Modificar</button>
                         </div>
                     </div>
                     <div class="content_tabla">

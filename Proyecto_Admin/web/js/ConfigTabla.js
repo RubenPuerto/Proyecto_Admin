@@ -26,4 +26,52 @@ function EliminarItem($valor) {
     $('#tabla').html(responseText);
     });
 }
+
+
+function ColumnEliminarCurso() {
+    $.post('ColumnEliminarCurso', {
+    
+    }, function(responseText) {
+    $('#tabla').html(responseText);
+    });
+}
+function EliminarCurso($valor) {
+    $.post('EliminarCurso', {
+    id : $valor
+    }, function(responseText) {
+    $('#tabla').html(responseText);
+    });
+}
+function ColumnEliminarBanner() {
+    $.post('ColumnEliminarBanner', {
+    
+    }, function(responseText) {
+    $('#tabla').html(responseText);
+    });
+}
+function EliminarBanner($valor) {
+    $.post('EliminarBanner', {
+    id : $valor
+    }, function(responseText) {
+    $('#tabla').html(responseText);
+    });
+}
+
+
+function ColumnModificar($valor) {
+    $.post('ColumnaModificar', {
+    Valor : $valor
+    }, function(responseText) {
+    $('#tabla').html(responseText);
+    });
+}
+
+function GuardarRegistro($valor) {
+    $.post('Eliminar', {
+    id : $valor
+    }, function(responseText) {
+    $('#tabla').html(responseText);
+    });
+}
+
        
