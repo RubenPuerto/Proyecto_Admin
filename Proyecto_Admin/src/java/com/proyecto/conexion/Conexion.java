@@ -206,6 +206,13 @@ public class Conexion {
     this.datos=this.consulta.executeQuery();
     return this.datos;
     }
+    public ResultSet getItemCursos(String Id) throws SQLException 
+    {
+    this.con();
+    this.consulta=(PreparedStatement) this.con.prepareStatement("select * from programas where IdCurso="+Id+"");
+    this.datos=this.consulta.executeQuery();
+    return this.datos;
+    }
     
     
     

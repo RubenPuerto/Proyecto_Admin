@@ -38,37 +38,7 @@ public class ColumnaModificar extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String Valor = request.getParameter("Valor");
-            if(Valor.equals("Banner")){
-                try{
-                out.println("<thead>");
-                out.println("<tr>");
-                out.println("<td>Id</td>");
-                out.println("<td>Nombre</td>");
-                out.println("<td>Url</td>");
-                out.println("<td>Imagen</td>");
-                out.println("<th>Modificar</th>");
-                out.println("</tr>");
-                out.println("</thead>");
             
-                Conexion c=new Conexion();
-                ResultSet rs=c.getBanner();
-                out.println("<tbody>");
-                while(rs.next())
-                {   
-                    out.println("<tr>");
-                    out.println("<td>"+rs.getInt("Id")+"</td>");
-                    out.println("<td>"+rs.getString("Nombre")+"</td>");
-                    out.println("<td>"+rs.getString("url") +"</td>");
-                    out.println("<td><input type='button' id='submit2' value='Ver Img' /></td>");
-//                    out.println("<td><input type='button' id='submit2' value='Modificar'  onclick='ModificarBanner("+rs.getInt("Id")+");' /></td>");
-                    out.println("<td><button><a class='fancybox fancybox.iframe' href='Modificar.jsp?IdBanner="+rs.getString("Id")+"'>Modificar</a></button></td>");
-                    out.println("</tr>");
-                }
-                    out.println("</tbody>");
-                } catch (SQLException ex) {
-                    Logger.getLogger(ColumnEliminarBanner.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
             if(Valor.equals("Programas")){
                 try {
                     out.println("<thead>");

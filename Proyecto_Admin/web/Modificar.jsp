@@ -23,26 +23,34 @@
     </head>
     <body>
         <%  
-            String Id = request.getParameter("IdBanner");
+            String Id = request.getParameter("IdCurso");
             //String Id = "1";
             Conexion c=new Conexion();
-            ResultSet rs=c.getItemBanner(Id);
+            ResultSet rs=c.getItemCursos(Id);
             while(rs.next()){
         %>
-        <form method="post" action="AddBanner" enctype="multipart/form-data">
+        <form id="form" method="post" action="ActualizarPrograma" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="Nombre">Nombre</label>
-                <input type="Text" class="form-control" name="NombreBanner" value="<%out.println(rs.getString("Nombre"));%>" placeholder="">
+                <label for="Nombre">Titulo Programa</label>
+                <input type="Text" class="form-control" id="Titulo"  value="<%out.println(rs.getString("TituloCurso"));%>" >
             </div>
             <div class="form-group">
-                <label for="LabelUrl">Url</label>
-                <input type="url" class="form-control" name="UrlBanner" value="<%out.println(rs.getString("Url"));%>" placeholder="">
+                <label for="exampleInputFile">Imagen Programa Home</label>
+                <input type="file" name="PhotoHome">
             </div>
             <div class="form-group">
-                <label for="exampleInputFile">Imagen Banner</label>
-                <input type="file" name="Photo">
+                <label for="LabelUrl">Id Video</label>
+                <input type="text" class="form-control" id="IdVideo" value="<%out.println(rs.getString("IdVideo"));%>">
             </div>
-            <button type="submit" class="btn btn-default" onclick="GuardarRegistro();">Guardar</button>
+            <div class="form-group">
+                <label for="LabelUrl">Descripcion Programa</label>
+                <input type="text" class="form-control" id="Descripcion" value="<%out.println(rs.getString("DescripcionCurso"));%>">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputFile">Imagen Programa Detalle Curso</label>
+                <input type="file" name="PhotoDetalleCurso">
+            </div>
+            <button type="submit" class="btn btn-default">Actualizar</button>
         </form>
         <%
                         }

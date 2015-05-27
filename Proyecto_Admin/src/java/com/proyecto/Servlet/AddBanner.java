@@ -38,9 +38,7 @@ public class AddBanner extends HttpServlet {
             InputStream ContentPhotoBanner = null;
             if (FilePhotoBanner != null) {
             // obtains input stream of the upload file
-                System.out.println("entro al if");
             ContentPhotoBanner=FilePhotoBanner.getInputStream();
-            
             }
             try {
                 Conexion c=new Conexion();

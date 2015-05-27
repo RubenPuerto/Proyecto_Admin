@@ -103,7 +103,7 @@ if (actual==null){
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-default"><a class="fancybox fancybox.iframe" href="AddBanner.jsp">Agregar</a></button>
                             <button type="button" id="btnAgregarColumna" class="btn btn-default" onclick="ColumnEliminarBanner();" >Eliminar</button>
-                            <button type="button" class="btn btn-default" onclick="ColumnModificar('Banner');" >Modificar</button>
+                            
                         </div>
                     </div>
                     <div class="content_tabla">
