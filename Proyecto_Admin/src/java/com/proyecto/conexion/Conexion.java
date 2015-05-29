@@ -213,6 +213,36 @@ public class Conexion {
     this.datos=this.consulta.executeQuery();
     return this.datos;
     }
+    public ResultSet UpdatePrograma(String idCurso, String titulo, InputStream ContentPhotoDetalle, String IdVideo, String Descripcion, InputStream ContentPhotoHome ) throws SQLException{
+    this.con();
+            if(ContentPhotoDetalle != null && ContentPhotoHome !=null){
+                //Aca se carga todo el formulario
+                String sql = "Update  programas set TituloCurso = ?, ImagenCurso = ?, IdVideo = ?, DescripcionCurso = ?, ImgCursosInicio = ? where IdCurso="+idCurso+"";
+                this.consulta=(PreparedStatement) this.con.prepareStatement(sql);
+                this.consulta.setString(1, titulo);
+                this.consulta.setBlob(2, ContentPhotoDetalle);
+                this.consulta.setString(3, IdVideo);
+                this.consulta.setString(4, Descripcion);
+                this.consulta.setBlob(5, ContentPhotoHome);
+                consulta.executeUpdate();
+                return this.datos;
+            }
+            if(ContentPhotoDetalle == null && ContentPhotoHome != null){
+                //Aca se carga los campos de texto menosla imagen Detalle
+                
+            }
+            if(ContentPhotoDetalle !=null && ContentPhotoHome ==null){
+                //Aca se carga los campos de texto menos la imagen Home
+                
+            }
+            if(ContentPhotoDetalle == null && ContentPhotoHome == null){
+                //Aca se cargan solo las caja de texto
+                
+                
+            }
+        return null;
+    
+    }
     
     
     

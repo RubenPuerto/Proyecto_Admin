@@ -52,6 +52,10 @@
         <servlet-name>ColumnaModificar</servlet-name>
         <servlet-class>com.proyecto.Servlet.ColumnaModificar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateItems</servlet-name>
+        <servlet-class>com.proyecto.Servlet.UpdateItems</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginValidar</servlet-name>
         <url-pattern>/LoginValidar</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>ColumnaModificar</servlet-name>
         <url-pattern>/ColumnaModificar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateItems</servlet-name>
+        <url-pattern>/UpdateItems</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

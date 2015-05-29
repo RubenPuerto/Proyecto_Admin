@@ -29,10 +29,14 @@
             ResultSet rs=c.getItemCursos(Id);
             while(rs.next()){
         %>
-        <form id="form" method="post" action="ActualizarPrograma" enctype="multipart/form-data">
+        <form id="form" method="post" action="UpdateItems" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="Nombre">Id Programa</label>
+                <input type="Text" readonly="readonly" class="form-control" name="IdPrograma"  value="<%out.println(rs.getInt("IdCurso"));%>" >
+            </div>
             <div class="form-group">
                 <label for="Nombre">Titulo Programa</label>
-                <input type="Text" class="form-control" id="Titulo"  value="<%out.println(rs.getString("TituloCurso"));%>" >
+                <input type="Text" class="form-control" name="Titulo"  value="<%out.println(rs.getString("TituloCurso"));%>" >
             </div>
             <div class="form-group">
                 <label for="exampleInputFile">Imagen Programa Home</label>
@@ -40,11 +44,11 @@
             </div>
             <div class="form-group">
                 <label for="LabelUrl">Id Video</label>
-                <input type="text" class="form-control" id="IdVideo" value="<%out.println(rs.getString("IdVideo"));%>">
+                <input type="text" class="form-control" name="IdVideo" value="<%out.println(rs.getString("IdVideo"));%>">
             </div>
             <div class="form-group">
                 <label for="LabelUrl">Descripcion Programa</label>
-                <input type="text" class="form-control" id="Descripcion" value="<%out.println(rs.getString("DescripcionCurso"));%>">
+                <input type="text" class="form-control" name="Descripcion" value="<%out.println(rs.getString("DescripcionCurso"));%>">
             </div>
             <div class="form-group">
                 <label for="exampleInputFile">Imagen Programa Detalle Curso</label>
