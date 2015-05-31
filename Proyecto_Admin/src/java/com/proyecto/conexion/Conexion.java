@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -213,9 +214,11 @@ public class Conexion {
     this.datos=this.consulta.executeQuery();
     return this.datos;
     }
-    public ResultSet UpdatePrograma(String idCurso, String titulo, InputStream ContentPhotoDetalle, String IdVideo, String Descripcion, InputStream ContentPhotoHome ) throws SQLException{
+    public ResultSet UpdatePrograma(String idCurso, String titulo, InputStream ContentPhotoDetalle, String IdVideo, String Descripcion,
+            InputStream ContentPhotoHome, long TamañoImgDetalle, long TamañoImgHome  ) throws SQLException{
     this.con();
-            if(ContentPhotoDetalle != null && ContentPhotoHome !=null){
+    //System.out.println(FilePhotoDetalle +" esta es ka foto de detalle Curso");
+            if(TamañoImgDetalle != 0 && TamañoImgHome !=0){
                 //Aca se carga todo el formulario
                 String sql = "Update  programas set TituloCurso = ?, ImagenCurso = ?, IdVideo = ?, DescripcionCurso = ?, ImgCursosInicio = ? where IdCurso="+idCurso+"";
                 this.consulta=(PreparedStatement) this.con.prepareStatement(sql);
@@ -227,17 +230,42 @@ public class Conexion {
                 consulta.executeUpdate();
                 return this.datos;
             }
-            if(ContentPhotoDetalle == null && ContentPhotoHome != null){
+            if(TamañoImgDetalle == 0 && TamañoImgHome != 0){
                 //Aca se carga los campos de texto menosla imagen Detalle
+                String sql = "Update  programas set TituloCurso = ?,  IdVideo = ?, DescripcionCurso = ?, ImgCursosInicio = ? where IdCurso="+idCurso+"";
+                this.consulta=(PreparedStatement) this.con.prepareStatement(sql);
+                this.consulta.setString(1, titulo);
+                this.consulta.setString(2, IdVideo);
+                this.consulta.setString(3, Descripcion);
+                this.consulta.setBlob(4, ContentPhotoHome);
+                consulta.executeUpdate();
+                return this.datos;
                 
             }
-            if(ContentPhotoDetalle !=null && ContentPhotoHome ==null){
+            if(TamañoImgDetalle != 0 && TamañoImgHome == 0){
                 //Aca se carga los campos de texto menos la imagen Home
+                String sql = "Update  programas set TituloCurso = ?, ImagenCurso = ?, IdVideo = ?, DescripcionCurso = ? where IdCurso="+idCurso+"";
+                this.consulta=(PreparedStatement) this.con.prepareStatement(sql);
+                this.consulta.setString(1, titulo);
+                this.consulta.setBlob(2, ContentPhotoDetalle);
+                this.consulta.setString(3, IdVideo);
+                this.consulta.setString(4, Descripcion);
+                consulta.executeUpdate();
+                return this.datos;
+                                
+
                 
             }
-            if(ContentPhotoDetalle == null && ContentPhotoHome == null){
+            if(TamañoImgDetalle == 0 && TamañoImgHome == 0){
                 //Aca se cargan solo las caja de texto
+                String sql = "Update  programas set TituloCurso = ?,  IdVideo = ?, DescripcionCurso = ? where IdCurso="+idCurso+"";
+                this.consulta=(PreparedStatement) this.con.prepareStatement(sql);
+                this.consulta.setString(1, titulo);
+                this.consulta.setString(2, IdVideo);
+                this.consulta.setString(3, Descripcion);
                 
+                consulta.executeUpdate();
+                return this.datos;
                 
             }
         return null;

@@ -34,7 +34,8 @@ public class AddBanner extends HttpServlet {
             
             System.out.println(Nombre+" "+Url);
             Part FilePhotoBanner = request.getPart("Photo");
-                       
+            long tamañoImagen =  FilePhotoBanner.getSize();
+            out.print(FilePhotoBanner+" este es el nombre de la imagen "+ tamañoImagen);
             InputStream ContentPhotoBanner = null;
             if (FilePhotoBanner != null) {
             // obtains input stream of the upload file

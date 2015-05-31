@@ -47,17 +47,22 @@ public class UpdateItems extends HttpServlet {
             
             InputStream ContentPhotoHome =null;
             InputStream ContentPhotoDetalle=null;
-            
-            if (FilePhotoDetalle != null || FilePhotoHome != null) {
+            out.println(FilePhotoDetalle);
+            long tamañoImagenDetalle =  FilePhotoDetalle.getSize();
+            long tamañoImagenHome =  FilePhotoHome.getSize();
+            if (FilePhotoDetalle != null && FilePhotoHome != null) {
             // obtains input stream of the upload file
+                     out.println("Entro al if ");
+
             ContentPhotoHome=FilePhotoHome.getInputStream();
             ContentPhotoDetalle=FilePhotoDetalle.getInputStream();
             }
             
             try {
                 Conexion c=new Conexion();
-                ResultSet rs=c.UpdatePrograma(IdCurso,titulo, ContentPhotoDetalle, IdVideo, Descripcion, ContentPhotoHome );
+                ResultSet rs=c.UpdatePrograma(IdCurso,titulo, ContentPhotoDetalle, IdVideo, Descripcion, ContentPhotoHome, tamañoImagenDetalle, tamañoImagenHome );
             } catch (Exception e) {
+                out.println("no se guardo nada");
             }
         }
     }
