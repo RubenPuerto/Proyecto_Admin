@@ -53,7 +53,6 @@ function EliminarBanner($valor) {
     
 }
 
-
 function ColumnModificar($valor) {
     $.post('ColumnaModificar', {
     Valor : $valor
@@ -68,6 +67,15 @@ function GuardarRegistro($valor) {
     }, function(responseText) {
     $('#tabla').html(responseText);
     });
+}
+
+function LeerIdCurso($valor) {
+    $.post('CapturarCursos', {
+    id : $valor
+    }, function(responseText) {
+    $('.Content_Select_Cursos').html(responseText);
+    });
+    
 }
 
        

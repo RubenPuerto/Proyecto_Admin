@@ -33,6 +33,7 @@ if (actual==null){
 
 %>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -44,16 +45,15 @@ if (actual==null){
         <link rel="stylesheet" href="css/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
         
         <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
-        <script src="js/ConfigTabla.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.5"></script>
+        <script src="js/ConfigTabla.js" type="text/javascript"></script>
         
         <script type="text/javascript">
 	$(document).ready(function() {
 		$(".fancybox").fancybox();
 	});
         </script>
-        
     </head>
     <body>        
         <div class="container">
@@ -89,54 +89,30 @@ if (actual==null){
                 <ul class="nav nav-pills nav-stacked bs-docs-sidenav affix">
                     <li><a href="Administracion.jsp">Inicio</a></li>
                     <li ><a href="Banner.jsp">Banner</a></li>
-                    <li class="active"><a href="#">Programas</a></li>
+                    <li><a href="Programas.jsp">Programas</a></li>
                     <li><a href="Temas.jsp">Cursos</a></li>
-                    <li><a href="Reportes.jsp">Reporte</a></li>
+                    <li class="active"><a href="#">Reporte</a></li>
                 </ul>
                 
             </div>
             <div class="col-xs-12 col-md-8">
-                <div class="content_Datos">
+                <div class="content_tabla">
                     <div class="title">
-                        <h3>Panel de Administración<br><small>Administracion de Programas</small></h3>
+                        <h3>Panel de Administración<br><small>Administracion del Banner</small></h3>
                     </div>
                     <div class="row contentOptions">
                         <div class="btn-group" role="group">
-                            <a class="fancybox fancybox.iframe" href="AddPrograma.jsp"><button type="button" class="btn btn-default">Agregar</button></a>
-                            <a><button type="button" id="btnAgregarColumna" class="btn btn-default" onclick="ColumnEliminarItem();" >Eliminar</button></a>
-                            <a><button type="button" class="btn btn-default" onclick="ColumnModificar('Programas');">Modificar</button></a>
+                            <a class="fancybox fancybox.iframe" href="GenerarReporte.jsp"><button type="button" id="btnAgregarColumna" class="btn btn-default"  >Reporte1</button></a>
+                            <a class="fancybox fancybox.iframe" href="GenerarReporte.jsp"><button type="button" id="btnAgregarColumna" class="btn btn-default"  >Reporte2</button></a>
                         </div>
                     </div>
-                    <div class="content_tabla">
-                        <table class="table table-bordered" id="tabla" style="margin: 0 auto;">
-                            <%
-                            out.println("<thead>");
-                            out.println("<tr>");
-                            out.println("<th>Id</th>");
-                            out.println("<th>Curso</th>");
-                            out.println("<th>Descripcion</th>");
-                            //out.println("<th>Descripcion</th>");
-                            out.println("</tr>");
-                            out.println("</thead>");
-                            Conexion c=new Conexion();
-                            ResultSet rs2=c.getCursos();
-                            out.println("<tbody>");
-                            while(rs2.next())
-                            {   
-                                out.println("<tr data-valor="+rs2.getInt("IdCurso")+"lass='click'>");
-                                out.println("<td>"+rs2.getInt("IdCurso")+"</td>");
-                                out.println("<td>"+rs2.getString("TituloCurso")+"</td>");
-                                out.println("<td>"+rs2.getString("DescripcionCurso") +"</td>");
-                                //out.println("<td><input type='button' id='submit2' value='Ver' /></td>");
-                                out.println("</tr>");
-                            }
-                            out.println("</tbody>");
-                            %>
-                        </table>
-                    </div>
+                    <!--<div class="content_tabla">
+                        
+                    </div>-->
                 </div>
             </div>    
         </div>
+        
         
     </body>
 </html>

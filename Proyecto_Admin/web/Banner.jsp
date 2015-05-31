@@ -90,7 +90,7 @@ if (actual==null){
                     <li class="active"><a href="#">Banner</a></li>
                     <li><a href="Programas.jsp">Programas</a></li>
                     <li><a href="Temas.jsp">Cursos</a></li>
-                    <li><a href="#">Reporte</a></li>
+                    <li><a href="Reportes.jsp">Reporte</a></li>
                 </ul>
                 
             </div>
@@ -101,8 +101,8 @@ if (actual==null){
                     </div>
                     <div class="row contentOptions">
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-default"><a class="fancybox fancybox.iframe" href="AddBanner.jsp">Agregar</a></button>
-                            <button type="button" id="btnAgregarColumna" class="btn btn-default" onclick="ColumnEliminarBanner();" >Eliminar</button>
+                            <a class="fancybox fancybox.iframe" href="AddBanner.jsp"><button type="button" class="btn btn-default">agregar</button></a>
+                            <a><button type="button" id="btnAgregarColumna" class="btn btn-default" onclick="ColumnEliminarBanner();" >Eliminar</button></a>
                             
                         </div>
                     </div>

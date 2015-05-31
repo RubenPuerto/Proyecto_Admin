@@ -7,22 +7,21 @@ package com.proyecto.Servlet;
 
 import com.proyecto.conexion.Conexion;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 /**
  *
  * @author RUBEN
  */
-@MultipartConfig(maxFileSize = 16177215)
-public class UpdateItems extends HttpServlet {
+public class CapturarCursos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,34 +33,26 @@ public class UpdateItems extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String IdCurso=request.getParameter("IdPrograma");
-            String titulo=request.getParameter("Titulo");
-            String IdVideo=request.getParameter("IdVideo");
-            String Descripcion=request.getParameter("Descripcion");
-            Part FilePhotoDetalle= request.getPart("PhotoDetalleCurso");
-            Part FilePhotoHome=request.getPart("PhotoHome");
+            String IdCurso=request.getParameter("id");
+            Conexion c= new Conexion();
             
-            InputStream ContentPhotoHome =null;
-            InputStream ContentPhotoDetalle=null;
-            out.println(FilePhotoDetalle);
-            long tamañoImagenDetalle =  FilePhotoDetalle.getSize();
-            long tamañoImagenHome =  FilePhotoHome.getSize();
-            if (FilePhotoDetalle != null && FilePhotoHome != null) {
-            // obtains input stream of the upload file
-                 
-            ContentPhotoHome=FilePhotoHome.getInputStream();
-            ContentPhotoDetalle=FilePhotoDetalle.getInputStream();
-            }
-            
+            out.println("<select name=\"Temas\" id=\"Temas\" class=\"form-control\" >");
+            out.println("<option>Seleccione</option>");
             try {
-                Conexion c=new Conexion();
-                ResultSet rs=c.UpdatePrograma(IdCurso,titulo, ContentPhotoDetalle, IdVideo, Descripcion, ContentPhotoHome, tamañoImagenDetalle, tamañoImagenHome );
-            } catch (Exception e) {
-                out.println("no se guardo nada");
+                ResultSet rs=c.llenarTema(IdCurso);
+                while (rs.next()){
+                    
+                    int value=rs.getInt("IdTemas");
+                    out.println("<option value="+value+" >"+rs.getString("Titulo")+"</option>");
+                }
+                out.println("</select>");
+                out.println("<button type=\"button\" id='BotonGenerar' class=\"btn btn-default\" >Generar Reporte</button>");
+            } catch (SQLException ex) {
+                
             }
         }
     }
@@ -78,7 +69,11 @@ public class UpdateItems extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(CapturarCursos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -92,7 +87,11 @@ public class UpdateItems extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(CapturarCursos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

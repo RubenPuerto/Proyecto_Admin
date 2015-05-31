@@ -271,6 +271,45 @@ public class Conexion {
         return null;
     
     }
+    public ResultSet getItemTemas(String Id) throws SQLException 
+    {
+    this.con();
+    this.consulta=(PreparedStatement) this.con.prepareStatement("select * from temas where IdTemas="+Id+"");
+    this.datos=this.consulta.executeQuery();
+    return this.datos;
+    }
+    public ResultSet UpdateTema(String IdCurso, String IdTema, String TituloTema, String DescripcionTema,
+            String CostoTema, InputStream ContentPhotoTema, long tamañoImagenTema ) throws SQLException{
+    this.con();
+    //System.out.println(FilePhotoDetalle +" esta es ka foto de detalle Curso");
+            if(tamañoImagenTema != 0){
+                //Aca se carga todo el formulario
+                String sql = "Update  Temas set IdPadre = ?, Costo = ?, Descripcion = ?, Titulo = ?, ImgTema = ? where IdTemas="+IdTema+" ";
+                this.consulta=(PreparedStatement) this.con.prepareStatement(sql);
+                this.consulta.setString(1, IdCurso);
+                this.consulta.setString(2, CostoTema);
+                this.consulta.setString(3, DescripcionTema);
+                this.consulta.setString(4, TituloTema);
+                this.consulta.setBlob(5, ContentPhotoTema);
+                consulta.executeUpdate();
+                return this.datos;
+            }
+            if(tamañoImagenTema == 0){
+                //Aca se carga los campos de texto menosla imagen Detalle
+                String sql = "Update  Temas set IdPadre = ?, Costo = ?, Descripcion = ?, Titulo = ? where IdTemas="+IdTema+" ";
+                this.consulta=(PreparedStatement) this.con.prepareStatement(sql);
+                this.consulta.setString(1, IdCurso);
+                this.consulta.setString(2, CostoTema);
+                this.consulta.setString(3, DescripcionTema);
+                this.consulta.setString(4, TituloTema);
+                consulta.executeUpdate();
+                return this.datos;
+                
+            }
+            
+        return null;
+    
+    }
     
     
     

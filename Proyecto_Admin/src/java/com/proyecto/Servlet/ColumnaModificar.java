@@ -59,7 +59,7 @@ public class ColumnaModificar extends HttpServlet {
                     out.println("<td>"+rs.getString("TituloCurso")+"</td>");
                     out.println("<td>"+rs.getString("DescripcionCurso") +"</td>");
                 
-                    out.println("<td><button><a class='fancybox fancybox.iframe' href='Modificar.jsp?IdCurso="+rs.getString("IdCurso")+"'>Modificar</a></button></td>");
+                    out.println("<td><a class='fancybox fancybox.iframe' href='Modificar.jsp?IdCurso="+rs.getString("IdCurso")+"'>Modificar</a></td>");
                     out.println("</tr>");
                 }
                 out.println("</tbody>");
@@ -91,7 +91,7 @@ public class ColumnaModificar extends HttpServlet {
                         out.println("<td>"+rs.getString("Descripcion") +"</td>");
                         out.println("<td>"+rs.getString("Titulo") +"</td>");
                         out.println("<td> <input type='button' id='submit2' value='Ver Img'></td>");
-                        out.println("<td><button><a class='fancybox fancybox.iframe' href='Modificar.jsp?IdTema="+rs.getString("IdTemas")+"'>Modificar</a></button></td>");
+                        out.println("<td><a class='fancybox fancybox.iframe' href='ModificarTema.jsp?IdTema="+rs.getString("IdTemas")+"'>Modificar</a></td>");
                         out.println("</tr>");
                     }
                     out.println("</tbody>");

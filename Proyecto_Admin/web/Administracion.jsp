@@ -80,7 +80,7 @@ if (actual==null){
                     <li><a href="Banner.jsp">Banner</a></li>
                     <li><a href="Programas.jsp">Programas</a></li>
                     <li><a href="Temas.jsp">Cursos</a></li>
-                    <li><a href="#">Reporte</a></li>
+                    <li><a href="Reportes.jsp">Reporte</a></li>
                 </ul>
                 
             </div>

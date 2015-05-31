@@ -9,10 +9,6 @@
         <servlet-class>com.proyecto.Servlet.InsertImg</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpImg</servlet-name>
-        <servlet-class>com.proyecto.Servlet.UpImg</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>UpPrograma</servlet-name>
         <servlet-class>com.proyecto.Servlet.UpPrograma</servlet-class>
     </servlet>
@@ -56,6 +52,14 @@
         <servlet-name>UpdateItems</servlet-name>
         <servlet-class>com.proyecto.Servlet.UpdateItems</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateTemas</servlet-name>
+        <servlet-class>com.proyecto.Servlet.UpdateTemas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CapturarCursos</servlet-name>
+        <servlet-class>com.proyecto.Servlet.CapturarCursos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginValidar</servlet-name>
         <url-pattern>/LoginValidar</url-pattern>
@@ -63,10 +67,6 @@
     <servlet-mapping>
         <servlet-name>InsertImg</servlet-name>
         <url-pattern>/InsertImg</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpImg</servlet-name>
-        <url-pattern>/UpImg</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpPrograma</servlet-name>
@@ -111,6 +111,14 @@
     <servlet-mapping>
         <servlet-name>UpdateItems</servlet-name>
         <url-pattern>/UpdateItems</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateTemas</servlet-name>
+        <url-pattern>/UpdateTemas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CapturarCursos</servlet-name>
+        <url-pattern>/CapturarCursos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -9,67 +9,60 @@ import com.proyecto.conexion.Conexion;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import static java.lang.System.out;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.servlet.annotation.MultipartConfig;
 
+/**
+ *
+ * @author RUBEN
+ */
+@MultipartConfig(maxFileSize = 16177215)
+public class UpdateTemas extends HttpServlet {
 
-@MultipartConfig(maxFileSize = 16177215) 
-public class UpImg extends HttpServlet {
-
-    private String dbURL = "jdbc:mysql://localhost:3306/proyecto";
-    private String dbUser = "root";
-    private String dbPass = "root";
-    
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String firstName = request.getParameter("firstName");
-            InputStream inputStream = null;
-            Part filePart = request.getPart("photo");
-        if (filePart != null) {
-            // prints out some information for debugging
-            System.out.println(filePart.getName());
-            System.out.println(filePart.getSize());
-            System.out.println(filePart.getContentType());
-             
+            String IdCurso=request.getParameter("Cursos");
+            String IdTema=request.getParameter("IdTema");
+            String TituloTema=request.getParameter("TituloTema");
+            String DescripcionTema=request.getParameter("DescripcionTema");
+            String CostoTema=request.getParameter("CostoTema");
+            Part FilePhotoTema= request.getPart("PhotoTema");
+            
+            
+            InputStream ContentPhotoTema =null;
+            
+            
+            long tamañoImagenTema =  FilePhotoTema.getSize();
+            
+            if (FilePhotoTema != null ) {
             // obtains input stream of the upload file
-            inputStream = filePart.getInputStream();
-        }
-        String message = null;
-        Connection conn = null; // connection to the database
-        
-                try {
-                DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-                conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
- 
-//                String sql = "INSERT INTO banner (Nombre, ImgBanner) values ( ?, ?)";
-                String sql = "INSERT INTO producto (nombreProducto, fotoProducto) values ( ?, ?)";
-                
-                PreparedStatement statement = conn.prepareStatement(sql);
-                out.println(statement);
-                statement.setString(1, firstName);
-                if (inputStream != null) {
-                // fetches input stream of the upload file for the blob column
-                statement.setBlob(2, inputStream);
-                statement.executeUpdate();
-                String url="Upload.jsp";
-                response.sendRedirect(url);
-                }
-            } catch (SQLException ex) {
-                out.println("error ruben");
-                ex.printStackTrace();
+                 
+            ContentPhotoTema=FilePhotoTema.getInputStream();
+            
+            }
+            
+            try {
+                Conexion c=new Conexion();
+                ResultSet rs=c.UpdateTema(IdCurso,IdTema, TituloTema, DescripcionTema, CostoTema, ContentPhotoTema, tamañoImagenTema );
+            } catch (Exception e) {
+                out.println("no se guardo nada");
             }
         }
     }
