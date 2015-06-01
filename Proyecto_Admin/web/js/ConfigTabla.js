@@ -5,15 +5,17 @@ function ColumnEliminarItem() {
     $('#tabla').html(responseText);
     });
 }
+
 function EliminarItem($valor) {
-    var r = confirm("Desea Eliminar el item");
-    if (r==true){
-    $.post('Eliminar', {
+  apprise('Desea Eliminar Este Item?', {'verify':true}, function(r) {
+    if(r) {
+   $.post('Eliminar', {
     id : $valor
     }, function(responseText) {
     $('#tabla').html(responseText);
     });
-    }
+    } 
+  });
 }
 
 
