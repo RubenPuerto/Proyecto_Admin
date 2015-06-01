@@ -26,16 +26,21 @@ function ColumnEliminarCurso() {
     $('#tabla').html(responseText);
     });
 }
+
 function EliminarCurso($valor) {
-    var r = confirm("Desea Eliminar el item");
-    if (r==true){
-    $.post('EliminarCurso', {
+  apprise('Desea Eliminar Este Item?', {'verify':true}, function(r) {
+    if(r) {
+   $.post('EliminarCurso', {
     id : $valor
     }, function(responseText) {
     $('#tabla').html(responseText);
     });
-    }
+    } 
+  });
 }
+
+
+
 function ColumnEliminarBanner() {
     $.post('ColumnEliminarBanner', {
     
@@ -43,16 +48,17 @@ function ColumnEliminarBanner() {
     $('#tabla').html(responseText);
     });
 }
+
 function EliminarBanner($valor) {
-    var r = confirm("Desea Eliminar el item");
-    if (r==true){
-    $.post('EliminarBanner', {
+  apprise('Desea Eliminar Este Item?', {'verify':true}, function(r) {
+    if(r) {
+   $.post('EliminarBanner', {
     id : $valor
     }, function(responseText) {
     $('#tabla').html(responseText);
     });
-}
-    
+    } 
+  });
 }
 
 function ColumnModificar($valor) {

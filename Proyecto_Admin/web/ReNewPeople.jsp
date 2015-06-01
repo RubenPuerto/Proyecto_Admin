@@ -1,20 +1,18 @@
 <%-- 
-    Document   : GenerarReporte
-    Created on : 30-may-2015, 22:22:38
-    Author     : RUBEN
+    Document   : ReCursosNuevos
+    Created on : Jun 1, 2015, 10:34:29 AM
+    Author     : alexanderls
 --%>
 
-<%@page import="java.sql.ResultSet"%>
-<%@page import="com.proyecto.conexion.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.proyecto.conexion.Conexion"%>
+<%@page import="java.sql.ResultSet"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>JSP Page</title>
-        <!--Estilos-->
+            <!--Estilos-->
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/GenerarReporte.css" rel="stylesheet" type="text/css"/>
         
@@ -24,10 +22,12 @@
         <script src="js/ConfigTabla.js" type="text/javascript"></script>
     </head>
     <body>
-        <div class="content_Select">
+     <form name="form1" method="post" action="REPORTENEWPEOPLE.jsp">
+         <h1>Seleccion una Categoria<h1>
+       <div class="content_Select">
             <div class="content_Select_Programas">
-                <select name="Cursos" id="Cursos" class="form-control" onchange="LeerIdCurso(value);">
-                    <option >Seleccione</option>
+                <select name="txtidcliente2" id="Cursos" class="form-control" onchange="LeerIdCurso(value);">
+                    <option >Seleccione Categoria</option>
                         <%
                             Conexion c=new Conexion();
                             int value=0;
@@ -43,5 +43,6 @@
                 
             </div>
         </div>
+    </form>
     </body>
 </html>

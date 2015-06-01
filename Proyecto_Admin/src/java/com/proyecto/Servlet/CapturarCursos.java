@@ -50,7 +50,7 @@ public class CapturarCursos extends HttpServlet {
                     out.println("<option value="+value+" >"+rs.getString("Titulo")+"</option>");
                 }
                 out.println("</select>");
-                out.println("<button type=\"button\" id='BotonGenerar' class=\"btn btn-default\" >Generar Reporte</button>");
+                out.println("<button type=\"submit\" id='BotonGenerar' class=\"btn btn-default\" >Generar Reporte</button>");
             } catch (SQLException ex) {
                 
             }

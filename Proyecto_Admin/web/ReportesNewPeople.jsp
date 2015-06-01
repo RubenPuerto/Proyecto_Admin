@@ -6,7 +6,6 @@
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="com.proyecto.conexion.Conexion"%>
-
 <%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -33,7 +32,6 @@ if (actual==null){
 
 %>
 <!DOCTYPE html>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -42,19 +40,14 @@ if (actual==null){
         <title>JSP Page</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/docs.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="css/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
-          <link href="css/GenerarReporte.css" rel="stylesheet" type="text/css"/>
+        
+          
+        
         
         <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.5"></script>
-        <script src="js/ConfigTabla.js" type="text/javascript"></script>
+         <script src="js/ConfigTabla.js" type="text/javascript"></script>
         
-        <script type="text/javascript">
-	$(document).ready(function() {
-		$(".fancybox").fancybox();
-	});
-        </script>
     </head>
     <body>        
         <div class="container">
@@ -89,31 +82,39 @@ if (actual==null){
                 
                 <ul class="nav nav-pills nav-stacked bs-docs-sidenav affix">
                     <li><a href="Administracion.jsp">Inicio</a></li>
-                    <li ><a href="Banner.jsp">Banner</a></li>
+                    <li><a href="Banner.jsp">Banner</a></li>
                     <li><a href="Programas.jsp">Programas</a></li>
                     <li><a href="Temas.jsp">Cursos</a></li>
-                    <li class="active"><a href="#">Reporte</a></li>
+                    <li class="active"><a href="Reportes.jsp">Reporte</a></li>
                 </ul>
                 
             </div>
             <div class="col-xs-12 col-md-8">
-                <div class="content_tabla">
-                    <div class="title">
-                        <h3>Panel de Administración<br><small>Administracion del Banner</small></h3>
-                    </div>
-                    <div class="row contentOptions">
-                        <div class="btn-group" role="group">
-                            <a class="" href="ReportesCursosNuevos.jsp"><button type="button" id="btnAgregarColumna" class="btn btn-default"  >Reporte Cursos Nuevos</button></a>
-                            <a class="" href="ReportesNewPeople.jsp"><button type="button" id="btnAgregarColumna" class="btn btn-default"  >Reporte Nuevas Personas</button></a>
-                        </div>
-                    </div>
-                    <!--<div class="content_tabla">
-                        
-                    </div>-->
-                </div>
+           <form name="form1" method="post" action="REPORTENEWPEOPLE.jsp">
+         <h1>Seleccion una Categoria<h1>
+       <div class="content_Select">
+            <div class="content_Select_Programas">
+                <select name="txtidcliente2" id="Cursos" class="form-control" onchange="LeerIdCurso(value);">
+                    <option >Seleccione Categoria</option>
+                        <%
+                            Conexion c=new Conexion();
+                            int value=0;
+                            ResultSet rs2=c.getCursos();
+                            while (rs2.next()){
+                            value=rs2.getInt("IdCurso");
+                            out.println("<option value="+value+" >"+rs2.getString("TituloCurso")+"</option>");
+                            }
+                        %>
+                </select>
+            </div>
+            <div class="Content_Select_Cursos">
+                
+            </div>
+        </div>
+    </form>
+                    
             </div>    
         </div>
-        
         
     </body>
 </html>

@@ -7,10 +7,11 @@ and open the template in the editor.
     Created on : 30-may-2015, 23:13:17
     Author     : RUBEN
 */
-.content_Select{
-    height: 200px;
-    margin-left: 50px;
-    margin-right:  40px;
+.Content_Select_Cursos {
+  margin-top: 20px;
+}
+input#BotonGenerar {
+  margin-top: 20px;
 }
 .content_Select_Programas{
     

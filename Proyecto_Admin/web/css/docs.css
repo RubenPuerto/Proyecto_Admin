@@ -5,6 +5,12 @@
 .bs-docs-example > p:last-child {
   margin-bottom: 0;
 }
+.Content_Select_Cursos {
+  margin-top: 20px;
+}
+input#BotonGenerar {
+  margin-top: 20px;
+}
 .bs-docs-example .table,
 .bs-docs-example .progress,
 .bs-docs-example .well,

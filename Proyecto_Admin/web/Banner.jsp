@@ -41,12 +41,14 @@ if (actual==null){
         <title>JSP Page</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/docs.css" rel="stylesheet" type="text/css"/>
+        <link href="css/apprise.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="css/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
         
         <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.5"></script>
         <script src="js/ConfigTabla.js" type="text/javascript"></script>
+         <script src="js/apprise.js" type="text/javascript"></script>
         
         <script type="text/javascript">
 	$(document).ready(function() {
