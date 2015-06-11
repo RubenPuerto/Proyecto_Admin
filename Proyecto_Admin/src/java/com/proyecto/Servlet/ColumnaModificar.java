@@ -71,11 +71,11 @@ public class ColumnaModificar extends HttpServlet {
                     out.println("<thead>");
                     out.println("<tr>");
                     out.println("<th>Id</th>");
-                    out.println("<th>IdPadre</th>");
+                    out.println("<th>Programa Pertenece</th>");
                     out.println("<th>Costo</th>");
                     out.println("<th>Descripcion</th>");
                     out.println("<th>Titulo</th>");
-                    out.println("<th>Imagen</th>");
+                    //out.println("<th>Imagen</th>");
                     out.println("<th>Modificar</th>");
                     out.println("</tr>");
                     out.println("</thead>");
@@ -90,7 +90,7 @@ public class ColumnaModificar extends HttpServlet {
                         out.println("<td>"+rs.getString("Costo") +"</td>");
                         out.println("<td>"+rs.getString("Descripcion") +"</td>");
                         out.println("<td>"+rs.getString("Titulo") +"</td>");
-                        out.println("<td> <input type='button' id='submit2' value='Ver Img'></td>");
+                        //out.println("<td> <input type='button' id='submit2' value='Ver Img'></td>");
                         out.println("<td><a class='fancybox fancybox.iframe' href='ModificarTema.jsp?IdTema="+rs.getString("IdTemas")+"'>Modificar</a></td>");
                         out.println("</tr>");
                     }

@@ -86,4 +86,9 @@ function LeerIdCurso($valor) {
     
 }
 
+function miFuncion() {
+     apprise("Se Guardo")
+    
+}
+
        

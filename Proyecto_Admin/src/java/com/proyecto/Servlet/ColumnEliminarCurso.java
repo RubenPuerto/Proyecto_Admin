@@ -41,11 +41,11 @@ public class ColumnEliminarCurso extends HttpServlet {
             out.println("<thead>");
             out.println("<tr>");
             out.println("<th>Id</th>");
-            out.println("<th>IdPadre</th>");
+            out.println("<th>Programa Pertenece</th>");
             out.println("<th>Costo</th>");
             out.println("<th>Descripcion</th>");
             out.println("<th>Titulo</th>");
-            out.println("<th>Imagen</th>");
+            //out.println("<th>Imagen</th>");
             out.println("<th>Eliminar</th>");
             out.println("</tr>");
             out.println("</thead>");
@@ -60,7 +60,7 @@ public class ColumnEliminarCurso extends HttpServlet {
                 out.println("<td>"+rs.getString("Costo") +"</td>");
                 out.println("<td>"+rs.getString("Descripcion") +"</td>");
                 out.println("<td>"+rs.getString("Titulo") +"</td>");
-                out.println("<td> <input type='button' id='submit2' value='Ver Img'></td>");
+                //out.println("<td> <input type='button' id='submit2' value='Ver Img'></td>");
                 out.println("<td><input type='button' id='submit2' value='Eliminar'  onclick='EliminarCurso("+rs.getInt("IdTemas")+");' /></td>");
                 out.println("</tr>");
             }

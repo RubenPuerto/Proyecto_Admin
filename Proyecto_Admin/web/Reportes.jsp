@@ -71,8 +71,7 @@ if (actual==null){
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
-				<li><a href="">User</a></li>
-				<li><a href="cursos.jsp">Nombre User</a></li>
+				
                                 <li><a href="logout.jsp">Salir</a></li>	
                             </ul>
                             <ul class="nav navbar-nav visible-xs">

@@ -50,12 +50,12 @@ public class EliminarCurso extends HttpServlet {
                         out.println("<thead>");
                         out.println("<tr>");
                         out.println("<th>Id</th>");
-                        out.println("<th>IdPadre</th>");
+                        out.println("<th>Programa Pertenece</th>");
                         out.println("<th>Costo</th>");
                         out.println("<th>Descripcion</th>");
                         out.println("<th>Titulo</th>");
                         out.println("<th>Imagen</th>");
-                        out.println("<th>Eliminar</th>");
+                        //out.println("<th>Eliminar</th>");
                         out.println("</tr>");
                         out.println("</thead>");
                         while(rs2.next())
@@ -67,7 +67,7 @@ public class EliminarCurso extends HttpServlet {
                             out.println("<td>"+rs2.getString("Costo") +"</td>");
                             out.println("<td>"+rs2.getString("Descripcion") +"</td>");
                             out.println("<td>"+rs2.getString("Titulo") +"</td>");
-                            out.println("<td> <input type='button' id='submit2' value='Ver Img'></td>");
+                            //out.println("<td> <input type='button' id='submit2' value='Ver Img'></td>");
                             out.println("<td><input type='button' id='submit2' value='Eliminar'  onclick='EliminarCurso("+rs2.getInt("IdTemas")+");' /></td>");
                             out.println("</tr>");
 

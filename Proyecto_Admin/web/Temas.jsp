@@ -72,8 +72,7 @@ if (actual==null){
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
-				<li><a href="">User</a></li>
-				<li><a href="cursos.jsp">Nombre User</a></li>
+				
                                 <li><a href="logout.jsp">Salir</a></li>	
                             </ul>
                             <ul class="nav navbar-nav visible-xs">
@@ -115,11 +114,11 @@ if (actual==null){
                             out.println("<thead>");
                             out.println("<tr>");
                             out.println("<th>Id</th>");
-                            out.println("<th>IdPadre</th>");
+                            out.println("<th>Programa Pertenece</th>");
                             out.println("<th>Costo</th>");
                             out.println("<th>Descripcion</th>");
                             out.println("<th>Titulo</th>");
-                            out.println("<th>Imagen</th>");
+                            //out.println("<th>Imagen</th>");
                             //out.println("<th>Descripcion</th>");
                             out.println("</tr>");
                             out.println("</thead>");
@@ -134,7 +133,7 @@ if (actual==null){
                                 out.println("<td>"+rs2.getString("Costo") +"</td>");
                                 out.println("<td>"+rs2.getString("Descripcion") +"</td>");
                                 out.println("<td>"+rs2.getString("Titulo") +"</td>");
-                                out.println("<td> <input type='button' id='submit2' value='Ver Img'></td>");
+                                //out.println("<td> <input type='button' id='submit2' value='Ver Img'></td>");
                                 
                                 
                                 out.println("</tr>");

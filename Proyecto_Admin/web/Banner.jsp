@@ -71,8 +71,7 @@ if (actual==null){
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
-				<li><a href="">User</a></li>
-				<li><a href="cursos.jsp">Nombre User</a></li>
+				
                                 <li><a href="logout.jsp">Salir</a></li>	
                             </ul>
                             <ul class="nav navbar-nav visible-xs">
@@ -116,7 +115,7 @@ if (actual==null){
                             out.println("<td>Id</td>");
                             out.println("<td>Nombre</td>");
                             out.println("<td>Url</td>");
-                            out.println("<td>Imagen</td>");
+                           // out.println("<td>Imagen</td>");
                             out.println("</tr>");
                             out.println("</thead>");
                             Conexion c=new Conexion();
@@ -128,7 +127,7 @@ if (actual==null){
                                 out.println("<td>"+rs.getInt("Id")+"</td>");
                                 out.println("<td>"+rs.getString("Nombre")+"</td>");
                                 out.println("<td>"+rs.getString("url") +"</td>");
-                                out.println("<td><input type='button' id='submit2' value='Ver Img' /></td>");
+                                //out.println("<td><input type='button' id='submit2' value='Ver Img' /></td>");
                                 out.println("</tr>");
                             }
                             out.println("</tbody>");

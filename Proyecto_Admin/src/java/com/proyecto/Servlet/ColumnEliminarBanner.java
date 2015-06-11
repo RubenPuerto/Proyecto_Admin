@@ -42,7 +42,7 @@ public class ColumnEliminarBanner extends HttpServlet {
             out.println("<td>Id</td>");
             out.println("<td>Nombre</td>");
             out.println("<td>Url</td>");
-            out.println("<td>Imagen</td>");
+           // out.println("<td>Imagen</td>");
             out.println("<th>Eliminar</th>");
             out.println("</tr>");
             out.println("</thead>");
@@ -56,7 +56,7 @@ public class ColumnEliminarBanner extends HttpServlet {
                 out.println("<td>"+rs.getInt("Id")+"</td>");
                 out.println("<td>"+rs.getString("Nombre")+"</td>");
                 out.println("<td>"+rs.getString("url") +"</td>");
-                out.println("<td><input type='button' id='submit2' value='Ver Img' /></td>");
+                //out.println("<td><input type='button' id='submit2' value='Ver Img' /></td>");
                 out.println("<td><input type='button' id='submit2' value='Eliminar'  onclick='EliminarBanner("+rs.getInt("Id")+");' /></td>");
                 out.println("</tr>");
             }

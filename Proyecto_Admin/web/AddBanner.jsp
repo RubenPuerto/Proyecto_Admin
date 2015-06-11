@@ -5,6 +5,29 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+response.setHeader("Content-Type", "text/html; charset=windows-1252");
+response.setHeader("Pragma", "no-cache");
+response.setHeader("Expires", "Mon, 01 Jan 2001 00:00:01 GMT");
+response.setHeader("Cache-Control", "no-store");
+
+HttpSession actual= request.getSession(true);
+String id=actual.getId();
+String nombre= (String)actual.getAttribute("logueado");
+
+if (actual.isNew()){
+response.sendRedirect("login.jsp");
+}
+if (actual==null){
+    response.sendRedirect("login.jsp");
+}else{
+    if(actual.getAttribute("logueado")==null){
+        response.sendRedirect("login.jsp");
+    }
+
+}
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,22 +41,23 @@
         <!--JavaScript-->
         <script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js"></script>
+        
     </head>
     <body>
         <form method="post" action="AddBanner" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="Nombre">Nombre</label>
-                <input type="Text" class="form-control" name="NombreBanner" placeholder="">
+                <input type="Text" class="form-control" name="NombreBanner" required placeholder="">
             </div>
             <div class="form-group">
                 <label for="LabelUrl">Url</label>
-                <input type="url" class="form-control" name="UrlBanner" placeholder="">
+                <input type="url" class="form-control" name="UrlBanner" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputFile">Imagen Banner</label>
-                <input type="file" name="Photo">
+                <input type="file" name="Photo" required>
             </div>
-            <button type="submit" class="btn btn-default">Guardar</button>
+            <button type="submit" class="btn btn-default" >Guardar</button>
         </form>
     </body>
 </html>

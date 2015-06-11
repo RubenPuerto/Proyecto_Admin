@@ -5,6 +5,29 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+response.setHeader("Content-Type", "text/html; charset=windows-1252");
+response.setHeader("Pragma", "no-cache");
+response.setHeader("Expires", "Mon, 01 Jan 2001 00:00:01 GMT");
+response.setHeader("Cache-Control", "no-store");
+
+HttpSession actual= request.getSession(true);
+String id=actual.getId();
+String nombre= (String)actual.getAttribute("logueado");
+
+if (actual.isNew()){
+response.sendRedirect("login.jsp");
+}
+if (actual==null){
+    response.sendRedirect("login.jsp");
+}else{
+    if(actual.getAttribute("logueado")==null){
+        response.sendRedirect("login.jsp");
+    }
+
+}
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,23 +46,23 @@
         <form method="post" action="UpPrograma" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="Nombre">Titulo Programa</label>
-                <input type="Text" class="form-control" name="Titulo" placeholder="">
+                <input type="Text" class="form-control" name="Titulo" placeholder="" required> 
             </div>
             <div class="form-group">
                 <label for="exampleInputFile">Imagen Programa Home</label>
-                <input type="file" name="PhotoHome">
+                <input type="file" name="PhotoHome" required>
             </div>
             <div class="form-group">
                 <label for="LabelUrl">Id Video</label>
-                <input type="text" class="form-control" name="IdVideo" placeholder="">
+                <input type="text" class="form-control" name="IdVideo" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="LabelUrl">Descripcion Programa</label>
-                <input type="text" class="form-control" name="Descripcion" placeholder="">
+                <input type="text" class="form-control" name="Descripcion" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputFile">Imagen Programa Detalle Curso</label>
-                <input type="file" name="PhotoDetalleCurso">
+                <input type="file" name="PhotoDetalleCurso" required>
             </div>
             <button type="submit" class="btn btn-default">Guardar</button>
         </form>

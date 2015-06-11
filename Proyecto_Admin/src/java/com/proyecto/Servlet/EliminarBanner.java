@@ -52,7 +52,7 @@ public class EliminarBanner extends HttpServlet {
                         out.println("<td>Id</td>");
                         out.println("<td>Nombre</td>");
                         out.println("<td>Url</td>");
-                        out.println("<td>Imagen</td>");
+                        //out.println("<td>Imagen</td>");
                         out.println("<th>Eliminar</th>");
                         out.println("</tr>");
                         out.println("</thead>");
@@ -63,7 +63,7 @@ public class EliminarBanner extends HttpServlet {
                             out.println("<td>"+rs2.getInt("Id")+"</td>");
                             out.println("<td>"+rs2.getString("Nombre")+"</td>");
                             out.println("<td>"+rs2.getString("url") +"</td>");
-                            out.println("<td><input type='button' id='submit2' value='Ver Img' /></td>");
+                            //out.println("<td><input type='button' id='submit2' value='Ver Img' /></td>");
                             out.println("<td><input type='button' id='submit2' value='Eliminar'  onclick='EliminarBanner("+rs2.getInt("Id")+");' /></td>");
                             out.println("</tr>");
 

@@ -61,6 +61,9 @@ public class UpdateTemas extends HttpServlet {
             try {
                 Conexion c=new Conexion();
                 ResultSet rs=c.UpdateTema(IdCurso,IdTema, TituloTema, DescripcionTema, CostoTema, ContentPhotoTema, tamañoImagenTema );
+                String site = new String("guardo.jsp");
+                response.setStatus(response.SC_MOVED_TEMPORARILY);
+                response.setHeader("Location", site);
             } catch (Exception e) {
                 out.println("no se guardo nada");
             }

@@ -64,8 +64,9 @@ public class AddTema extends HttpServlet {
             try {
                 Conexion c=new Conexion();
                 ResultSet rs=c.SaveTema(IdCurso, Costo, Descripcion, Titulo, ContentPhotoTema);
-                out.println("<div>se guardo</div>");
-                out.println(rs);
+                String site = new String("guardo.jsp");
+                response.setStatus(response.SC_MOVED_TEMPORARILY);
+                response.setHeader("Location", site);
             } catch (Exception e) {
                 out.println("<div>No se guardo nada</div>");
             }

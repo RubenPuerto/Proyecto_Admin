@@ -65,7 +65,9 @@ public class UpPrograma extends HttpServlet {
         try {
                 Conexion c=new Conexion();
                 ResultSet rs=c.SavePrograma(titulo, ContentPhotoDetalle, IdVideo, Descripcion, ContentPhotoHome );
-                out.println("<div>se guardo</div>");
+                String site = new String("guardo.jsp");
+                response.setStatus(response.SC_MOVED_TEMPORARILY);
+                response.setHeader("Location", site);
             } catch (Exception e) {
                 out.println("<div>No se guardo nada</div>");
             }
