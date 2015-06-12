@@ -28,7 +28,7 @@ String idcliente2=request.getParameter("Temas");
 llamado $P{CODIGO}, pero solo se escribira "CODIGO", el String que capturamos lo colocamos, en este caso el 
 reporte solo nos pide un parametro*/
 parameters.put("Cate",idcliente);
-parameters.put("Tema",idcliente); 
+parameters.put("Tema",idcliente2); 
 /*Enviamos la ruta del reporte, los parámetros y la conexión(objeto Connection)*/ 
 byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath (), parameters, conexion.getconexion()); 
 /*Indicamos que la respuesta va a ser en formato PDF*/ response.setContentType("application/pdf");

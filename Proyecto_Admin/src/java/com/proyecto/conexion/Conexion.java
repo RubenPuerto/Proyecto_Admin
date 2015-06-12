@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.servlet.http.Part;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,7 +36,17 @@ public class Conexion {
         
     
     }
-    
+    public Connection getconexion(){
+        Connection cn=null;
+        
+        try{
+              Class.forName("com.mysql.jdbc.Driver");
+            cn=DriverManager.getConnection("jdbc:mysql://"+this.server+"/"+this.bd,this.user,this.pass);
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        return cn;
+    }
     public void con() throws SQLException {
         
         try {
